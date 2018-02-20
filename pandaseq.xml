@@ -1,0 +1,53 @@
+<tool id="pandaseq" name="Merge paired-end overlap" version="0.1.0">
+    <requirements>
+        <requirement type="package" version="2.11">pandaseq</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        pandaseq -f "$input1" -r "$input2" > "$output1"
+    ]]></command>
+    <inputs>
+        <param type="data" name="input1" format="fastq.gz" />
+        <param type="data" name="input2" format="fastq.gz" />
+    </inputs>
+    <outputs>
+        <data name="output1" format="fasta" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="input1" value="test_1.fastq.gz"/>
+            <param name="input2" value="test_2.fastq.gz"/>
+            <output name="output1" file="test.fasta"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+        pandaseq 2.11 <andre@masella.name>
+	Usage: pandaseq -f forward.fastq -i index.fastq -r reverse.fastq
+	-f forward.fastq	Input FASTQ file containing forward reads.
+	-g log.txt	Output log to a text file.
+	-h	Show this delightful nonsense.
+	-i index.fastq	Input FASTQ file containing separate barcode/index reads.
+	-j	Input files are bzipped. (Deprecated.)
+	-k kmers	The number of k-mers in the table.
+	-l length	Minimum length for a sequence.
+	-o length	Minumum overlap region length for a sequence.
+	-p primer	Forward primer sequence or number of bases to be removed.
+	-q primer	Reverse primer sequence or number of bases to be removed.
+	-r reverse.fastq	Input FASTQ file containing reverse reads.
+	-t threshold	The minimum probability that a sequence must have to assemble and, if used, match a primer.
+	-u unaligned.txt	File to write unalignable read pairs.
+	-v	Show version and exit.
+	-w output.fasta	Output seqences to a FASTA (or FASTQ) file.
+
+    ]]></help>
+    <citations>
+        <citation type="bibtex">
+@misc{githubpandaseq,
+  author = {LastTODO, FirstTODO},
+  year = {TODO},
+  title = {pandaseq},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/neufeld/pandaseq},
+}</citation>
+    </citations>
+</tool>
